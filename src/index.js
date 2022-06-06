@@ -1,14 +1,21 @@
 import '../assets/css/style.css';
 
 const app = document.getElementById('app');
-const div = document.createElement('div');
-const text = document.createTextNode('DOM!')
-const comment = document.createComment('No comment')
+app.innerHTML = `
+<h1>JavaScript DOM!!</h1>
+`;
 
-div.append(comment)
-div.append(text)
-app.append(div)
-console.log(app, div)
+const h1 = document.createElement('h1');
+h1.innerText = 'Ultimate Courses';
+h1.innerText = 'Learning JS DOM';
+h1.style.display = 'none';
+app.append(h1)
+
+console.log(app.innerHTML)
+console.log(app.innerText)
+console.log(app.textContent)
+
+
 
 
 
@@ -59,11 +66,8 @@ console.log(document.body instanceof Object)
   12: Notation
 */
 
-
+// nodeName
 console.log(document.body.nodeType)
 console.log(document.nodeType)
 
-// nodeName form any Node types
-console.log(document.body.nodeName)
-// tagName for any Element type
-console.log(document.body.tagName)
+console.log(document.nodeName)
