@@ -1,75 +1,22 @@
 import '../assets/css/style.css';
 
 const app = document.getElementById('app');
-// app.innerHTML = `
-// <h1>JavaScript DOM!!</h1>
-// `;
+app.innerHTML = `
+<h1>JavaScript DOM!!</h1>
+`;
 
-// Using document.createElement
-function createInputDOM({ label, type = 'text' }) {
-  const labelEl = document.createElement('label');
-  const inputEl = document.createElement('input');
+const data = ['Earth', 'Fire', 'Water', 'Air'];
 
-  inputEl.type = type
-  labelEl.innerText = label;
-  labelEl.append(inputEl)
+const fragment = document.createDocumentFragment();
 
-  return labelEl;
-}
+data.forEach(name => {
+  const li = document.createElement('li');
+  li.innerText = name;
+  fragment.append(li);
+})
+console.dir(fragment)
 
-const inputFromDOM = createInputDOM({ label: 'Name' })
-
-console.log(inputFromDOM)
-app.append(inputFromDOM)
-
-// Using string templates
-function createInputTemplate({ label, type = 'text' }) {
-  return `
-    <label>
-      ${label}
-      <input type='${type}'>
-    <label>
-  `
-}
-
-const inputFromTemplate = createInputTemplate({ label: 'Email', type: 'email' })
-
-app.innerHTML += inputFromTemplate
-
-
-
-
-// <html>
-console.log(document)
-console.dir(document)
-console.dir(document.documentElement)
-
-// <head>
-console.dir(document.head)
-
-// <body>
-console.dir(document.body)
-
-// retrieve the contructor name from
-console.log(document.body.constructor.name)
-
-// looking at the prototype chain
-console.log(document.body instanceof HTMLBodyElement)
-console.log(document.body instanceof HTMLElement)
-console.log(document.body instanceof Element)
-console.log(document.body instanceof Node)
-console.log(document.body instanceof EventTarget)
-console.log(document.body instanceof Object)
-
-
-// Onload of DOM content
-/*document.addEventListener('DOMContentLoaded', () => {
-  alert('DOMContentLoaded')
-})*/
-
-// On load of page
-//window.addEventListener('load', () => { alert('Load') })
-
+app.append(fragment)
 /*
   - NodeTypes
   1: Element
