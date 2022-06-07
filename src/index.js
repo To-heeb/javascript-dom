@@ -5,18 +5,25 @@ app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
 `;
 
-const data = ['Earth', 'Fire', 'Water', 'Air'];
+const div = document.createElement('div');
+const span = document.createElement('span');
+const p = document.createElement('p');
+const i = document.createElement('i');
+const b = document.createElement('b');
 
-const fragment = document.createDocumentFragment();
 
-data.forEach(name => {
-  const li = document.createElement('li');
-  li.innerText = name;
-  fragment.append(li);
-})
-console.dir(fragment)
 
-app.append(fragment)
+div.append(span)
+div.prepend(p)
+span.after(i)
+//span.before(i)
+
+// old way using insertBefore
+//i.parentNode.insertBefore(b, i)
+
+// old way of insertAfter
+i.parentNode.insertBefore(b, i)
+console.log(div);
 /*
   - NodeTypes
   1: Element
