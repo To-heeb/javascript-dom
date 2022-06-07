@@ -17,26 +17,19 @@ data.forEach(items => {
 })
 
 // getElementById : HTMLElement
-const ulFromId = document.getElementById('list');
-console.log(ulFromId);
-ulFromId.append(fragment);
+const ulFromQuerySelector = document.querySelector('#list');
+console.log(ulFromQuerySelector)
 
-// getElementsByClassName : HTMLCollection
-const listItemsFromClassName = ulFromId.getElementsByClassName('list-item');
-console.log(listItemsFromClassName)
+ulFromQuerySelector.append(fragment)
 
-// getElementsByTagName
-const listItemsFromTagName = ulFromId.getElementsByTagName('li')
-console.log(listItemsFromTagName)
+const listItemFromQuerySelectorAll = document.querySelectorAll('.list-item');
+console.log(listItemFromQuerySelectorAll)
 
-// Demonstrate live collection
 const newListItem = document.createElement('li');
 newListItem.className = 'list-item';
 newListItem.innerText = 'Air';
-ulFromId.append(newListItem);
-
-console.log(listItemsFromClassName)
-console.log(listItemsFromTagName)
+ulFromQuerySelector.append(newListItem);
+console.log(listItemFromQuerySelectorAll, document.querySelectorAll('.list-item'))
 
 
 
