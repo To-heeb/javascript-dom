@@ -6,23 +6,16 @@ app.innerHTML = `
 `;
 
 const div = document.createElement('div');
-const span = document.createElement('span');
-
-span.innerText = 'Can you clone me?';
-div.append(span);
+div.innerText = 'I am a message!';
 
 app.append(div);
 
-// cloneNode(false) only clones the top element
-const clone = div.cloneNode();
+// new way
+setTimeout(() => div.remove(), 2500);
 
-// cloneNode(true) clones all elements and subtrees
-const newClone = div.cloneNode(true);
+// oldway
+setTimeout(() => div.parentNode.removeChild(div), 2500)
 
-app.append(newClone);
-
-console.log(clone);
-console.log(newClone);
 
 
 
