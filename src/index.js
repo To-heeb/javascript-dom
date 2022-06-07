@@ -3,27 +3,20 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
+<ul>
+  <li>1</li>
+</ul>
 `;
 
-const div = document.createElement('div');
-const span = document.createElement('span');
-const p = document.createElement('p');
-const i = document.createElement('i');
-const b = document.createElement('b');
+const ul = app.querySelector('ul');
+ul.insertAdjacentHTML('beforebegin', '<p>Before</p>');
+ul.insertAdjacentHTML('afterbegin', '<li>First</li>');
+ul.insertAdjacentHTML('beforeend', '<li>Last</li>');
+ul.insertAdjacentHTML('afterend', '<p>After</p>');
+
+console.log(app)
 
 
-
-div.append(span)
-div.prepend(p)
-span.after(i)
-//span.before(i)
-
-// old way using insertBefore
-//i.parentNode.insertBefore(b, i)
-
-// old way of insertAfter
-i.parentNode.insertBefore(b, i)
-console.log(div);
 /*
   - NodeTypes
   1: Element
@@ -39,9 +32,3 @@ console.log(div);
   11: DocumentFragment
   12: Notation
 */
-
-// nodeName
-console.log(document.body.nodeType)
-console.log(document.nodeType)
-
-console.log(document.nodeName)
