@@ -3,18 +3,40 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
+<ul id='list'></ul>
 `;
 
-const div = document.createElement('div');
-div.innerText = 'I am a message!';
+const data = ['Earth', 'Fire', 'Water']
+const fragment = document.createDocumentFragment()
 
-app.append(div);
+data.forEach(items => {
+  const li = document.createElement('li')
+  li.className = 'list-item';
+  li.innerHTML = items;
+  fragment.append(li);
+})
 
-// new way
-setTimeout(() => div.remove(), 2500);
+// getElementById : HTMLElement
+const ulFromId = document.getElementById('list');
+console.log(ulFromId);
+ulFromId.append(fragment);
 
-// oldway
-setTimeout(() => div.parentNode.removeChild(div), 2500)
+// getElementsByClassName : HTMLCollection
+const listItemsFromClassName = ulFromId.getElementsByClassName('list-item');
+console.log(listItemsFromClassName)
+
+// getElementsByTagName
+const listItemsFromTagName = ulFromId.getElementsByTagName('li')
+console.log(listItemsFromTagName)
+
+// Demonstrate live collection
+const newListItem = document.createElement('li');
+newListItem.className = 'list-item';
+newListItem.innerText = 'Air';
+ulFromId.append(newListItem);
+
+console.log(listItemsFromClassName)
+console.log(listItemsFromTagName)
 
 
 
