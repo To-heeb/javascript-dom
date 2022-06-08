@@ -3,16 +3,25 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<div id='father'>
-  <div class='item'></div>
-</div>
+<ul id='list'>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
 `;
 
-const item = document.querySelector('.item');
-console.log(item.parentNode);
-console.log(item.parentElement.parentElement)
-console.log(item.closest('#app'));
-console.log(item.closest('#father'));
+const listItem = document.querySelector('#list li');
+
+// Any DOM Nodes
+console.log(listItem.nextSibling);
+console.log(listItem.previousSibling);
+
+// Any Element Nodes
+console.log(listItem.nextElementSibling)
+console.log(listItem.previousElementSibling)
+
 
 
 /*
