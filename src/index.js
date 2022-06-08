@@ -3,33 +3,31 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<ul id='list'></ul>
+<ul id='list'>
+  <li>Earth</li>
+  <li>Fire</li>
+  <li>Water</li>
+  <li>Air</li>
+</ul>
 `;
 
-const data = ['Earth', 'Fire', 'Water']
-const fragment = document.createDocumentFragment()
+const listItems = document.querySelectorAll('#list li')
+console.log(listItems);
 
-data.forEach(items => {
-  const li = document.createElement('li')
-  li.className = 'list-item';
-  li.innerHTML = items;
-  fragment.append(li);
-})
+for (let i = 0; i < listItems.length; i++) {
+  console.log(listItems[i]);
+}
 
-// getElementById : HTMLElement
-const ulFromQuerySelector = document.querySelector('#list');
-console.log(ulFromQuerySelector)
+for (const items of listItems) {
+  console.log(items);
+}
 
-ulFromQuerySelector.append(fragment)
+// spread operator
+[...listItems].forEach(item => console.log(item));
 
-const listItemFromQuerySelectorAll = document.querySelectorAll('.list-item');
-console.log(listItemFromQuerySelectorAll)
+// for any iterable
+Array.from(listItems).forEach(item => console.log(item));
 
-const newListItem = document.createElement('li');
-newListItem.className = 'list-item';
-newListItem.innerText = 'Air';
-ulFromQuerySelector.append(newListItem);
-console.log(listItemFromQuerySelectorAll, document.querySelectorAll('.list-item'))
 
 
 
