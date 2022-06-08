@@ -3,25 +3,13 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<ul id='list'>
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-</ul>
+<input type="text" value='0'>
 `;
 
-const listItem = document.querySelector('#list li');
-
-// Any DOM Nodes
-console.log(listItem.nextSibling);
-console.log(listItem.previousSibling);
-
-// Any Element Nodes
-console.log(listItem.nextElementSibling)
-console.log(listItem.previousElementSibling)
-
+const input = document.querySelector('input');
+input.value = 2
+input.setAttribute('value', 2)
+console.log(parseInt(input.value, 10));
 
 
 /*
