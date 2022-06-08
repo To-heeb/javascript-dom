@@ -3,13 +3,25 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<input type="text" value='0'>
+<button type="button">
+  CLOSE ME
+</button>
 `;
 
-const input = document.querySelector('input');
-input.value = 2
-input.setAttribute('value', 2)
-console.log(parseInt(input.value, 10));
+const button = document.querySelector('button')
+console.log(button)
+
+// SET ATTRIBUTE
+button.setAttribute('aria-label', 'Close this modal')
+
+// GET ATTRIBUTE
+const value = button.getAttribute('aria-label')
+console.log(value)
+
+// .attributes
+console.log(button.attributes)
+
+
 
 
 /*
