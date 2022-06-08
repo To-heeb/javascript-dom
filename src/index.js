@@ -3,36 +3,16 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<ul id='list'>
-<!-- Hey yoh, I am here -->
-  <li>Earth</li>
-  <li>Fire</li>
-  <li>Water</li>
-  <li>Air</li>
-</ul>
+<div id='father'>
+  <div class='item'></div>
+</div>
 `;
 
-const list = document.querySelector('#list')
-const selectedIndex = 2;
-
-// querySelectorAll: Nodelist
-const queryChildren = list.querySelectorAll('li');
-console.log(queryChildren[selectedIndex], queryChildren.length)
-
-// .children: HTMLCollection
-console.log(list.children[selectedIndex], list.children.length)
-
-// .childNodes: Nodelist
-console.log(list.childNodes[selectedIndex], list.childNodes.length)
-
-// first/last
-console.log(list.firstChild, list.firstElementChild)
-console.log(list.lastChild, list.lastElementChild)
-
-
-
-
-
+const item = document.querySelector('.item');
+console.log(item.parentNode);
+console.log(item.parentElement.parentElement)
+console.log(item.closest('#app'));
+console.log(item.closest('#father'));
 
 
 /*
