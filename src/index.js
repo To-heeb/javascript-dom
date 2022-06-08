@@ -4,6 +4,7 @@ const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
 <ul id='list'>
+<!-- Hey yoh, I am here -->
   <li>Earth</li>
   <li>Fire</li>
   <li>Water</li>
@@ -11,22 +12,24 @@ app.innerHTML = `
 </ul>
 `;
 
-const listItems = document.querySelectorAll('#list li')
-console.log(listItems);
+const list = document.querySelector('#list')
+const selectedIndex = 2;
 
-for (let i = 0; i < listItems.length; i++) {
-  console.log(listItems[i]);
-}
+// querySelectorAll: Nodelist
+const queryChildren = list.querySelectorAll('li');
+console.log(queryChildren[selectedIndex], queryChildren.length)
 
-for (const items of listItems) {
-  console.log(items);
-}
+// .children: HTMLCollection
+console.log(list.children[selectedIndex], list.children.length)
 
-// spread operator
-[...listItems].forEach(item => console.log(item));
+// .childNodes: Nodelist
+console.log(list.childNodes[selectedIndex], list.childNodes.length)
 
-// for any iterable
-Array.from(listItems).forEach(item => console.log(item));
+// first/last
+console.log(list.firstChild, list.firstElementChild)
+console.log(list.lastChild, list.lastElementChild)
+
+
 
 
 
