@@ -3,32 +3,31 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<button type="button" class="one two">
+<button type="button">
   Click Me!
 </button>
 `;
 
 const button = document.querySelector('button');
 
-//Old way: Set
-button.className += ' three';
+console.dir(button);
 
-// Old way: Get
-console.dir(button.className.split(' '));
+// Avoid, doesn't allow multiple event
+button.onclick = function () {
+  console.log(1)
+}
 
-// New way: Classlist
-// Add
-button.classList.add('four')
+function handleClick(event) {
+  console.log(this, event.target);
+}
+button.addEventListener('click', handleClick)
 
-// Remove
-button.classList.remove('one')
-
-// Toggle
-button.classList.toggle('five')
-setTimeout(() => button.classList.toggle('five'), 2500)
-
-// Replace
-button.classList.replace('two', 'six')
+button.addEventListener('dblclick', (event) => {
+  console.log(this, event.target, "Double-Click")
+})
+// button.addEventListener('click', () => {
+//   console.log(3);
+// })
 
 
 
