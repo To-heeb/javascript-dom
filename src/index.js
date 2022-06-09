@@ -4,22 +4,22 @@ const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
 <button type="button">
-  CLOSE ME
+  Click Me!
 </button>
 `;
 
-const button = document.querySelector('button')
-console.log(button)
+// <button style="padding: 25px; margin: 0;">
+const button = document.querySelector('button');
+console.dir(button.style)
 
-// SET ATTRIBUTE
-button.setAttribute('aria-label', 'Close this modal')
+// cssText
+button.style.cssText = 'padding: 25px; margin: 10px 0; font-size: 20px;'
 
-// GET ATTRIBUTE
-const value = button.getAttribute('aria-label')
-console.log(value)
+// driect property access
+button.style.fontSize = '22px';
+button.style.marginTop = '1px';
 
-// .attributes
-console.log(button.attributes)
+console.log(button.style.fontSize);
 
 
 
