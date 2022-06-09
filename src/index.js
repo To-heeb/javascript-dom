@@ -3,24 +3,32 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<button type="button">
+<button type="button" class="one two">
   Click Me!
 </button>
 `;
 
-// <button style="padding: 25px; margin: 0;">
 const button = document.querySelector('button');
-console.dir(button.style)
 
-// cssText
-button.style.cssText = 'padding: 25px; margin: 10px 0; font-size: 20px;'
+//Old way: Set
+button.className += ' three';
 
-// driect property access
-button.style.fontSize = '22px';
-button.style.marginTop = '1px';
+// Old way: Get
+console.dir(button.className.split(' '));
 
-console.log(button.style.fontSize);
+// New way: Classlist
+// Add
+button.classList.add('four')
 
+// Remove
+button.classList.remove('one')
+
+// Toggle
+button.classList.toggle('five')
+setTimeout(() => button.classList.toggle('five'), 2500)
+
+// Replace
+button.classList.replace('two', 'six')
 
 
 
