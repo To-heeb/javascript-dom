@@ -12,22 +12,19 @@ const button = document.querySelector('button');
 
 console.dir(button);
 
-// Avoid, doesn't allow multiple event
-button.onclick = function () {
-  console.log(1)
+function handleClick(event) {
+  console.log(event.target);
+  button.removeEventListener('click', handleClick)
 }
 
-function handleClick(event) {
-  console.log(this, event.target);
-}
 button.addEventListener('click', handleClick)
 
-button.addEventListener('dblclick', (event) => {
-  console.log(this, event.target, "Double-Click")
-})
-// button.addEventListener('click', () => {
-//   console.log(3);
-// })
+setTimeout(() => {
+  button.removeEventListener('click', handleClick)
+}, 5000)
+
+// Make and event handlers work once
+//button.addEventListener('dblclick', () => { console.log('Double-Click!') }, { once: true })
 
 
 
