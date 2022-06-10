@@ -3,42 +3,27 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<button type="button">
-  Add Item
-</button>
-<ul id="list">
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-  <li>Item 4</li>
-</ul>
+<div style="height: 1000px"></div>
 `;
 
-const list = document.querySelector('#list');
-const button = document.querySelector('button');
-//const items = [...list.querySelectorAll('li')];
+document.addEventListener('keydown', event => {
+  //console.log(event.key, event.code);
+  switch (event.key) {
+    case "ArrowUp": {
+      console.log("Up")
+      event.preventDefault()
+      break;
+    }
 
-
-function handleClick(event) {
-  if (event.target.tagName.toLowerCase() !== 'li') {
-    return;
+    case "ArrowDown": {
+      console.log("Down")
+      event.preventDefault()
+    }
   }
-  console.log(event.target.innerText);
-}
-
-button.addEventListener('click', () => {
-  const items = list.querySelectorAll('li');
-  const li = document.createElement('li');
-  li.innerText = `Item ${items.length + 1}`;
-  list.append(li)
 })
-
-
-// items.forEach((item) => {
-//   item.addEventListener('click', handleClick);
-// })
-
-list.addEventListener('click', handleClick);
+// Keyup is prefered to Keydown due to performance considerations.
+document.addEventListener("keydown", event => { console.log(event.key, event.code) })
+document.addEventListener("keyup", event => { console.log(event.key, event.code) })
 
 
 
