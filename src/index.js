@@ -3,29 +3,39 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<button type="button">
-  Click Me!
-</button>
+<div class="one">
+  <div class="two">
+    <button type="button" class="three">
+      Click Me
+    </button>
+  </div>
+</div>
 `;
 
-const button = document.querySelector('button');
-
-console.dir(button);
+const one = document.querySelector('.one');
+const two = document.querySelector('.two');
+const three = document.querySelector('.three');
 
 function handleClick(event) {
-  console.log(event.target);
-  button.removeEventListener('click', handleClick)
+  event.stopImmediatePropagation()
+  //event.stopPropagation();
+  console.log(event.target)
 }
+one.addEventListener('click', handleClick)
+two.addEventListener('click', handleClick)
+three.addEventListener('click', handleClick)
 
-button.addEventListener('click', handleClick)
+three.addEventListener('click', event => console.log(event), { capture: true })
 
-setTimeout(() => {
-  button.removeEventListener('click', handleClick)
-}, 5000)
 
-// Make and event handlers work once
-//button.addEventListener('dblclick', () => { console.log('Double-Click!') }, { once: true })
 
+
+// Phases of event propagation
+// 1- Capturing Phase :- The event goes down to the element.
+// 2- Targetting Phase :- The event reaches the target element.
+// 3- Bubbling Phase :- The event is bubbles from the target element.
+
+// DOM doesn't deny target but gives the listerner it's right. It also does not prevent immediate propagation to other event-handlers.
 
 
 /*
