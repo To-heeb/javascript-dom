@@ -3,40 +3,43 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<form>
-  <label>
-    Sign-up Email
-    <input type="email">
-  </label>
-  <label>
-    I agree to the terms
-    <input type="checkbox">
-  </label>
-</form>
+<button type="button">
+  Add Item
+</button>
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+</ul>
 `;
 
-const form = document.querySelector('form');
-const email = document.querySelector('input[type=email]');
-const checkbox = document.querySelector('input[type=checkbox]');
+const list = document.querySelector('#list');
+const button = document.querySelector('button');
+//const items = [...list.querySelectorAll('li')];
 
-function handleSubmit(event) {
-  //console.log(event);
-  if (!checkbox.checked) {
-    event.preventDefault();
-    // has NOT agreed
-    console.log("I am not submitting.....");
-    console.log(event.defaultPrevented);
+
+function handleClick(event) {
+  if (event.target.tagName.toLowerCase() !== 'li') {
     return;
   }
-  console.log("Submitted", email.value);
+  console.log(event.target.innerText);
 }
 
-form.addEventListener('submit', handleSubmit);
+button.addEventListener('click', () => {
+  const items = list.querySelectorAll('li');
+  const li = document.createElement('li');
+  li.innerText = `Item ${items.length + 1}`;
+  list.append(li)
+})
 
-// example to demonstrate no checking
-// checkbox.addEventListener('click', event => {
-//   event.preventDefault();
+
+// items.forEach((item) => {
+//   item.addEventListener('click', handleClick);
 // })
+
+list.addEventListener('click', handleClick);
+
 
 
 /*
