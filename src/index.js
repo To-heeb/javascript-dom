@@ -3,39 +3,40 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<div class="one">
-  <div class="two">
-    <button type="button" class="three">
-      Click Me
-    </button>
-  </div>
-</div>
+<form>
+  <label>
+    Sign-up Email
+    <input type="email">
+  </label>
+  <label>
+    I agree to the terms
+    <input type="checkbox">
+  </label>
+</form>
 `;
 
-const one = document.querySelector('.one');
-const two = document.querySelector('.two');
-const three = document.querySelector('.three');
+const form = document.querySelector('form');
+const email = document.querySelector('input[type=email]');
+const checkbox = document.querySelector('input[type=checkbox]');
 
-function handleClick(event) {
-  event.stopImmediatePropagation()
-  //event.stopPropagation();
-  console.log(event.target)
+function handleSubmit(event) {
+  //console.log(event);
+  if (!checkbox.checked) {
+    event.preventDefault();
+    // has NOT agreed
+    console.log("I am not submitting.....");
+    console.log(event.defaultPrevented);
+    return;
+  }
+  console.log("Submitted", email.value);
 }
-one.addEventListener('click', handleClick)
-two.addEventListener('click', handleClick)
-three.addEventListener('click', handleClick)
 
-three.addEventListener('click', event => console.log(event), { capture: true })
+form.addEventListener('submit', handleSubmit);
 
-
-
-
-// Phases of event propagation
-// 1- Capturing Phase :- The event goes down to the element.
-// 2- Targetting Phase :- The event reaches the target element.
-// 3- Bubbling Phase :- The event is bubbles from the target element.
-
-// DOM doesn't deny target but gives the listerner it's right. It also does not prevent immediate propagation to other event-handlers.
+// example to demonstrate no checking
+// checkbox.addEventListener('click', event => {
+//   event.preventDefault();
+// })
 
 
 /*
