@@ -3,29 +3,31 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<div style="height: 1000px"></div>
+<form method="post" name="order">
+  <lable>
+    Your name
+    <input type="text" name="fullname">
+  </label>
+</form>
 `;
 
-document.addEventListener('keydown', event => {
-  //console.log(event.key, event.code);
-  switch (event.key) {
-    case "ArrowUp": {
-      console.log("Up")
-      event.preventDefault()
-      break;
-    }
+const form = document.forms.order;
 
-    case "ArrowDown": {
-      console.log("Down")
-      event.preventDefault()
-    }
-  }
-})
-// Keyup is prefered to Keydown due to performance considerations.
-document.addEventListener("keydown", event => { console.log(event.key, event.code) })
-document.addEventListener("keyup", event => { console.log(event.key, event.code) })
+const fullname = form.elements.fullname;
+
+function handleInput(event) {
+  // access the value
+  console.log(event.target.value)
+
+  // access the form
+  console.log(event.target.form)
+}
+
+fullname.addEventListener('change', handleInput)
 
 
+// Using destructors to access objects properties
+//const { fullname, email } = form.elements;
 
 /*
   - NodeTypes
