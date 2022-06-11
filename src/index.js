@@ -14,10 +14,26 @@ app.innerHTML = `
       <option value="pepperoni">Pepperoni</option>
       <option value="meaty">Meaty</option>
       <option value="cheesy">Cheesy</option>
-      <option value="pepperoni">Pepperoni</option>
-      <option value="pepperoni">Pepperoni</option>
     </select>
   </label>
+  <div>
+    <label>
+        Small
+        <input type="radio" name="size" value="small" checked>
+    </label>
+    <label>
+        Medium
+        <input type="radio" name="size" value="medium">
+    </label>
+    <label>
+        Large
+        <input type="radio" name="size" value="large">
+    </label>
+  </div>
+  <label>
+    Quantity
+    <input type="number" name="quantity" value="1">
+  <label>
   <button type="submit">
     Submit
   </button>
@@ -28,21 +44,25 @@ const form = document.forms.order;
 
 function handleSubmit(event) {
   event.preventDefault();
-  console.log(new FormData(event.target))
-}
+  // query string
+  // Content-Type = application/x-www-form-urlencoded
+  // fullname=Toheeb+Oyekola&pizza=pepperoni&size=large&quantity=2
+  const formData = new FormData(event.target);
 
-function handleFormData(event) {
-  console.log([...event.formData])
-  console.log([...event.formData.values()])
-  const entries = event.formData.entries()
+  // methode 1 for querystring creation
+  // const data = [...formData.entries()]
+  // const asString = data.map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`).join('&');
 
-  for (const entry of entries) {
-    console.log(entry)
-  }
+  // methode 2 for querystring creation
+  const asString = new URLSearchParams(formData).toString();
+  console.log(asString);
+
+  // json
+  const asJson = JSON.stringify(Object.fromEntries(formData));
+  console.log(asJson);
 }
 
 form.addEventListener('submit', handleSubmit);
-form.addEventListener('formdata', handleFormData)
 
 
 /*
