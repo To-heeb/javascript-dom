@@ -4,33 +4,41 @@ const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
 <form method="post" name="example">
-  <div class="container">
-    <label>
-      Accept Marketing
-      <input type='checkbox' name='marketing'>  
-    </label>
-  </div>
+  <select name="drink">
+    <option value="">Selct Your Drink...</option>
+    <option value="lemonade" selected>Lemonade</option>
+    <option value="cola">Cola</option>
+    <option value="water">Water</option>
+  </select>
 </form>
 `;
 
 const form = document.forms.example;
-const checkbox = form.elements.marketing;
+const select = form.elements.drink;
 
-// 1. Properties that are useful
-console.dir(checkbox);
-checkbox.checked = true;
-// set
-checkbox.checked = true;
-// get
-console.log(checkbox.checked);
+// 1. Selected value
+select.value = "water";
+console.log(select.value)
 
-// 2. Events
-checkbox.addEventListener('change', () => {
-  console.log(checkbox.checked)
+// 2. Selected Index
+const id = 2;
+select.selectedIndex = id;
+console.log(select.selectedIndex)
+
+// 3. Selected DOM Element
+console.log(select.options[id])
+
+// 4. Events
+select.addEventListener("change", () => {
+  console.log(select.value)
+  console.log(select.selectedIndex)
 })
 
-// 3. Method 
-checkbox.select()
+// 5. Add new <option>
+const option = document.createElement("option");
+option.value = 'milk';
+option.text = "Milk";
+select.add(option, 1)
 
 
 
