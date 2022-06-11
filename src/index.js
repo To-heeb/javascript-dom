@@ -3,71 +3,46 @@ import '../assets/css/style.css';
 const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
-<form method="post" name="order">
-  <lable>
-    Your name
-    <input type="text" name="fullname">
-  </label>
-  <lable>
-    Which pizza do you like?
-    <select name="pizza">
-      <option value="pepperoni">Pepperoni</option>
-      <option value="meaty">Meaty</option>
-      <option value="cheesy">Cheesy</option>
-    </select>
-  </label>
-  <div>
-    <label>
-        Small
-        <input type="radio" name="size" value="small" checked>
-    </label>
-    <label>
-        Medium
-        <input type="radio" name="size" value="medium">
-    </label>
-    <label>
-        Large
-        <input type="radio" name="size" value="large">
-    </label>
-  </div>
-  <label>
-    Quantity
-    <input type="number" name="quantity" value="1">
-  <label>
-  <button type="submit">
-    Submit
-  </button>
+<form method="post" name="example">
+  <input type='text' name='myInput' value="Hello">
 </form>
 `;
 
-const form = document.forms.order;
+const form = document.forms.example;
+const input = form.myInput;
 
-function handleSubmit(event) {
+// 1. Properties that are  useful to know
+console.dir(input);
+// set
+input.value = 'Goodbye';
+//input.readOnly = true;
+//input.disabled = true;
+// get
+console.log(input.value);
+
+// 2. Events
+// other events: cut, copy, paste
+input.addEventListener('focus', () => console.log('Focus'))
+input.addEventListener('blur', () => console.log('Blur'))
+input.addEventListener('input', () => console.log('Input'))
+input.addEventListener('change', () => console.log('Change'))
+input.addEventListener('cut', (event) => {
   event.preventDefault();
+  console.log('Can\'t Cut')
+})
+input.addEventListener('copy', (event) => {
+  event.preventDefault();
+  console.log("Can't Copy")
+})
+input.addEventListener('paste', (event) => {
+  event.preventDefault();
+  console.log("Can't Paste")
+})
 
-
-  const formData = new FormData(event.target);
-
-  // query string
-  const asString = new URLSearchParams(formData).toString();
-  console.log(asString);
-
-  // json
-  const asJson = JSON.stringify(Object.fromEntries(formData));
-  console.log(asJson);
-
-  fetch('http://localhost:2000/nin', {
-    method: 'POST',
-    headers: {
-      //'Content-Type': 'application/x-www-form-urlencoded'
-      'Content-Type': 'application/json'
-    },
-    body: asJson,
-  })
-}
-
-form.addEventListener('submit', handleSubmit);
-
+// 3. Methods
+// focus an input
+input.focus()
+setTimeout(() => input.blur(), 3000);
 
 /*
   - NodeTypes
