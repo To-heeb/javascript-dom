@@ -8,26 +8,42 @@ app.innerHTML = `
     Your name
     <input type="text" name="fullname">
   </label>
+  <lable>
+    Which pizza do you like?
+    <select name="pizza">
+      <option value="pepperoni">Pepperoni</option>
+      <option value="meaty">Meaty</option>
+      <option value="cheesy">Cheesy</option>
+      <option value="pepperoni">Pepperoni</option>
+      <option value="pepperoni">Pepperoni</option>
+    </select>
+  </label>
+  <button type="submit">
+    Submit
+  </button>
 </form>
 `;
 
 const form = document.forms.order;
 
-const fullname = form.elements.fullname;
-
-function handleInput(event) {
-  // access the value
-  console.log(event.target.value)
-
-  // access the form
-  console.log(event.target.form)
+function handleSubmit(event) {
+  event.preventDefault();
+  console.log(new FormData(event.target))
 }
 
-fullname.addEventListener('change', handleInput)
+function handleFormData(event) {
+  console.log([...event.formData])
+  console.log([...event.formData.values()])
+  const entries = event.formData.entries()
 
+  for (const entry of entries) {
+    console.log(entry)
+  }
+}
 
-// Using destructors to access objects properties
-//const { fullname, email } = form.elements;
+form.addEventListener('submit', handleSubmit);
+form.addEventListener('formdata', handleFormData)
+
 
 /*
   - NodeTypes
