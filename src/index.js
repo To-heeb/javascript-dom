@@ -44,22 +44,26 @@ const form = document.forms.order;
 
 function handleSubmit(event) {
   event.preventDefault();
-  // query string
-  // Content-Type = application/x-www-form-urlencoded
-  // fullname=Toheeb+Oyekola&pizza=pepperoni&size=large&quantity=2
+
+
   const formData = new FormData(event.target);
 
-  // methode 1 for querystring creation
-  // const data = [...formData.entries()]
-  // const asString = data.map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`).join('&');
-
-  // methode 2 for querystring creation
+  // query string
   const asString = new URLSearchParams(formData).toString();
   console.log(asString);
 
   // json
   const asJson = JSON.stringify(Object.fromEntries(formData));
   console.log(asJson);
+
+  fetch('http://localhost:2000/nin', {
+    method: 'POST',
+    headers: {
+      //'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
+    },
+    body: asJson,
+  })
 }
 
 form.addEventListener('submit', handleSubmit);
