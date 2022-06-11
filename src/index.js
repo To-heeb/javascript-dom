@@ -4,45 +4,53 @@ const app = document.getElementById('app');
 app.innerHTML = `
 <h1>JavaScript DOM!!</h1>
 <form method="post" name="example">
-  <input type='text' name='myInput' value="Hello">
+  <div class="container">
+    <label>
+      Blue
+      <input type='radio' name='color' value="blue" checked>  
+    </label>
+    <label>
+      Red
+      <input type='radio' name='color' value="red">  
+    </label>
+    <label>
+      Green
+      <input type='radio' name='color' value="green">  
+    </label>
+  </div>
 </form>
 `;
 
 const form = document.forms.example;
-const input = form.myInput;
+console.dir(form.elements)
+const radios = [...form.elements.color];
 
-// 1. Properties that are  useful to know
-console.dir(input);
-// set
-input.value = 'Goodbye';
-//input.readOnly = true;
-//input.disabled = true;
-// get
-console.log(input.value);
+// 1.Properties that are useful
+radios.forEach(radio => {
+  console.log(radio.value);
+  console.log(radio.checked);
+})
 
 // 2. Events
-// other events: cut, copy, paste
-input.addEventListener('focus', () => console.log('Focus'))
-input.addEventListener('blur', () => console.log('Blur'))
-input.addEventListener('input', () => console.log('Input'))
-input.addEventListener('change', () => console.log('Change'))
-input.addEventListener('cut', (event) => {
-  event.preventDefault();
-  console.log('Can\'t Cut')
-})
-input.addEventListener('copy', (event) => {
-  event.preventDefault();
-  console.log("Can't Copy")
-})
-input.addEventListener('paste', (event) => {
-  event.preventDefault();
-  console.log("Can't Paste")
+const container = form.querySelector('.container');
+container.addEventListener('change', () => {
+  // Old way
+  // const checked = radios.find(radio => radio.checked).value;
+  // console.log(checked);
+
+  // New way
+  console.log(form.elements.color.value)
 })
 
 // 3. Methods
-// focus an input
-input.focus()
-setTimeout(() => input.blur(), 3000);
+radios[2].select();
+console.log(radios);
+
+
+
+
+
+
 
 /*
   - NodeTypes
