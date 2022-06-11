@@ -6,49 +6,31 @@ app.innerHTML = `
 <form method="post" name="example">
   <div class="container">
     <label>
-      Blue
-      <input type='radio' name='color' value="blue" checked>  
-    </label>
-    <label>
-      Red
-      <input type='radio' name='color' value="red">  
-    </label>
-    <label>
-      Green
-      <input type='radio' name='color' value="green">  
+      Accept Marketing
+      <input type='checkbox' name='marketing'>  
     </label>
   </div>
 </form>
 `;
 
 const form = document.forms.example;
-console.dir(form.elements)
-const radios = [...form.elements.color];
+const checkbox = form.elements.marketing;
 
-// 1.Properties that are useful
-radios.forEach(radio => {
-  console.log(radio.value);
-  console.log(radio.checked);
-})
+// 1. Properties that are useful
+console.dir(checkbox);
+checkbox.checked = true;
+// set
+checkbox.checked = true;
+// get
+console.log(checkbox.checked);
 
 // 2. Events
-const container = form.querySelector('.container');
-container.addEventListener('change', () => {
-  // Old way
-  // const checked = radios.find(radio => radio.checked).value;
-  // console.log(checked);
-
-  // New way
-  console.log(form.elements.color.value)
+checkbox.addEventListener('change', () => {
+  console.log(checkbox.checked)
 })
 
-// 3. Methods
-radios[2].select();
-console.log(radios);
-
-
-
-
+// 3. Method 
+checkbox.select()
 
 
 
